@@ -20,11 +20,11 @@ install:
 
 # Defini o script de Teste que deve rodar toda vez que o código for alterado.                                                                                                                            
 script:
-  - pytest -v test.py || travis_terminate 1;
+ # - pytest -v test.py || travis_terminate 1;
+  - coverage run -m pytest test.py || travis_terminate 1;
+  - coverage xml app.py || travis_terminate 1;
   - sonar-scanner || travis_terminate 1;  
-#   - coverage run -m pytest test.py || travis_terminate 1;
-#   - coverage xml app.py || travis_terminate 1;
-#   
+  
 
 # Definir o Deploy no Heroku
 deploy:
