@@ -9,10 +9,10 @@ language: python
 python:                                                                                                                                                                                                  
   - "3.8" 
                                                                                                                                                                                              
-# addons:
-#   sonarcloud:
-#     organization: jt
-#     token: ${SONAR_TOKEN}
+addons:
+  sonarcloud:
+    organization: jtfernandesgit
+    token: ${SONAR_TOKEN}
 
 # Instalação de Módulos que são necessários para a Aplicação.                                                                                                                                            
 install:                                                                                                                                                                                                 
@@ -20,10 +20,11 @@ install:
 
 # Defini o script de Teste que deve rodar toda vez que o código for alterado.                                                                                                                            
 script:
-  - pytest -v test.py 
+  - pytest -v test.py || travis_terminate 1;
+  - sonar-scanner || travis_terminate 1;  
 #   - coverage run -m pytest test.py || travis_terminate 1;
 #   - coverage xml app.py || travis_terminate 1;
-#   - sonar-scanner || travis_terminate 1;
+#   
 
 # Definir o Deploy no Heroku
 deploy:
