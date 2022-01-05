@@ -8,7 +8,7 @@ language: python
 # Versão que a aplicação suporta.                                                                                                                                                                        
 python:                                                                                                                                                                                                  
   - "3.8" 
-                                                                                                                                                                                             
+
 addons:
   sonarcloud:
     organization: jtfernandesgit
